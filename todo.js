@@ -89,7 +89,7 @@ function printing_data_in_screen(value, index, sta) {
   }
 
   cb_con.addEventListener('click', () => {
-   
+
     if (content.style.textDecoration != "line-through") {
       content.style.textDecoration = "line-through";
       cb_con.innerHTML = "✔";
@@ -109,6 +109,23 @@ function printing_data_in_screen(value, index, sta) {
       temp[index].status = false;
       localStorage.setItem("task", JSON.stringify(temp));
     }
+          //storing entire  data in temp eats ram but i will fix it later
+
+  });
+
+  m_box.addEventListener('click', () => {
+         console.log(index);
+        m_box.parentElement.style.display="none";
+         list_box.removeChild(document.getElementsByClassName('task')[index]);
+       m_box.parentElement.in
+       list_box.childElementCount
+    let temp = localStorage.getItem("task");
+      temp = JSON.parse(temp);
+      temp.slice(index,1);
+      localStorage.removeItem("task");
+      localStorage.setItem("task", JSON.stringify(temp));
+  
+   
   });
 
 }
