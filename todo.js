@@ -9,6 +9,7 @@ const btn = document.getElementById('btn');
 //temp represent no of tasks
 
 var temp = localStorage.getItem("totalTask");
+console.log(temp);
 if (temp === null) {
   temp = 0;
   var task = [];
@@ -115,17 +116,29 @@ function printing_data_in_screen(value, index, sta) {
 
   m_box.addEventListener('click', () => {
          console.log(index);
-        m_box.parentElement.style.display="none";
+        m_box.parentElement.style.display="none";/*
          list_box.removeChild(document.getElementsByClassName('task')[index]);
        m_box.parentElement.in
        list_box.childElementCount
-    let temp = localStorage.getItem("task");
+       let temp = localStorage.getItem("task");
       temp = JSON.parse(temp);
       temp.slice(index,1);
       localStorage.removeItem("task");
       localStorage.setItem("task", JSON.stringify(temp));
-  
-   
+  */
+let x= m_box.parentNode.childNodes[1].innerHTML;
+        console.log("index",x);
+      let temp = localStorage.getItem("task");
+      temp = JSON.parse(temp);
+
+      let ind = temp.findIndex(temp => temp.tak === x);
+      if (index !== -1) {
+          temp.splice(ind, 1);
+      }
+      localStorage.setItem("task", JSON.stringify(temp));
+      let tmp_totaltsk = localStorage.getItem("totalTask");
+      tmp_totaltsk=tmp_totaltsk-1;
+    localStorage.setItem("totalTask",tmp_totaltsk);
   });
 
 }
